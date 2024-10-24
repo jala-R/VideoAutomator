@@ -11,19 +11,7 @@ func main() {
 
 	temp := types.Samplecharacteristics{}
 
-	fmt.Println("starting")
-	var temp = Person{}
-
-	temp.Name = []Name{
-		{
-			FirstName: "1.1",
-			LastName:  "1.2",
-		},
-		{
-			FirstName: "2.1",
-			LastName:  "2.2",
-		},
-	}
+	types.Constructor(temp)
 
 	res, err := xml.MarshalIndent(temp, "", "  ")
 
