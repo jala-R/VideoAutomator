@@ -5,52 +5,89 @@ import (
 	"reflect"
 )
 
+var deafultValues = map[reflect.Type]interface{}{
+	reflect.TypeOf(Xmeml{}): Xmeml{
+		Version: "4",
+	},
+	reflect.TypeOf(Sequence{}): Sequence{
+		Id:                                      "sequence",
+		TL_SQAudioVisibleBase:                   "0",
+		TL_SQVideoVisibleBase:                   "0",
+		TL_SQVisibleBaseTime:                    "19964966382570",
+		TL_SQAVDividerPosition:                  "0.5",
+		TL_SQHideShyTracks:                      "0",
+		TL_SQHeaderWidth:                        "236",
+		TL_SQDataTrackViewControlState:          "1",
+		Monitor_ProgramZoomOut:                  "190897452345600",
+		Monitor_ProgramZoomIn:                   "0",
+		TL_SQTimePerPixel:                       "0.12206059932398784",
+		MZ_EditLine:                             "34326452160000",
+		MZ_Sequence_PreviewFrameSizeHeight:      "1080",
+		MZ_Sequence_PreviewFrameSizeWidth:       "1920",
+		MZ_Sequence_AudioTimeDisplayFormat:      "200",
+		MZ_Sequence_PreviewRenderingClassID:     "1061109567",
+		MZ_Sequence_PreviewRenderingPresetCodec: "1634755443",
+		MZ_Sequence_PreviewRenderingPresetPath:  `EncoderPresets\SequencePreview\9678af98-a7b7-4bdb-b477-7ac9c8df4a4e\QuickTime.epr`,
+		MZ_Sequence_PreviewUseMaxRenderQuality:  "false",
+		MZ_Sequence_PreviewUseMaxBitDepth:       "false",
+		MZ_Sequence_EditingModeGUID:             "9678af98-a7b7-4bdb-b477-7ac9c8df4a4e",
+		MZ_Sequence_VideoTimeDisplayFormat:      "102",
+		MZ_WorkOutPoint:                         "219435023808000",
+		MZ_WorkInPoint:                          "212061193344000",
+		ExplodedTracks:                          "true",
+	},
+	reflect.TypeOf(Rate{}): Rate{
+		30,
+		"TRUE",
+	},
+	reflect.TypeOf(Timecode{}): Timecode{
+		String:        "00:00:00:00",
+		Frame:         0,
+		DispalyFormat: "NDF",
+	},
+	reflect.TypeOf(Label{}): Label{
+		Label2: "Caribbean",
+	},
+	reflect.TypeOf(LoggingInfo{}): LoggingInfo{},
+	reflect.TypeOf(Media{}):       Media{},
+	reflect.TypeOf(Video{}):       Video{},
+	reflect.TypeOf(Audio{}):       Audio{},
+	reflect.TypeOf(Format{}):      Format{},
+	reflect.TypeOf(Outputs{}):     Outputs{},
+	reflect.TypeOf(Group{}):       Group{},
+	reflect.TypeOf(Track{}):       Track{},
+	reflect.TypeOf(Clipitem{}):    Clipitem{},
+	reflect.TypeOf(ColourInfo{}):  ColourInfo{},
+	reflect.TypeOf(File{}):        File{},
+	reflect.TypeOf(Filter{}):      Filter{},
+	reflect.TypeOf(Effect{}):      Effect{},
+	reflect.TypeOf(Parameter{}):   Parameter{},
+	reflect.TypeOf(Codec{}): Codec{
+		Name:            "Apple ProRes 422",
+		AppName:         "Final Cut Pro",
+		Codecname:       "Apple ProRes 422",
+		Codectypename:   "Apple ProRes 422",
+		Codectypecode:   "apcn",
+		Codecvendorcode: "appl",
+		Spatialquality:  "1024",
+		Temporalquality: "0",
+		Keyframerate:    "0",
+		Datarate:        "0",
+	},
+	reflect.TypeOf(Samplecharacteristics{}): Samplecharacteristics{
+		Width:            1920,
+		Height:           1080,
+		Anamorphic:       "FALSE",
+		Pixelaspectratio: "square",
+		Fielddominance:   "none",
+		Colordepth:       "24",
+	},
+}
+
 type Xmeml struct {
 	XMLName  string   `xml:"xmeml"`
 	Version  string   `xml:"version,attr"`
 	Sequence Sequence `xml:"sequence"`
-}
-
-var defautXmemlOptions = Xmeml{
-	Version: "4",
-}
-
-func NewXmeml(opt *Xmeml) *Xmeml {
-	result := &Xmeml{}
-
-	if opt.Version == "" {
-		result.Version = defautXmemlOptions.Version
-	}
-
-	return result
-}
-
-var defautSequenceOptions = Sequence{
-	Id:                                      "sequence",
-	TL_SQAudioVisibleBase:                   "0",
-	TL_SQVideoVisibleBase:                   "0",
-	TL_SQVisibleBaseTime:                    "19964966382570",
-	TL_SQAVDividerPosition:                  "0.5",
-	TL_SQHideShyTracks:                      "0",
-	TL_SQHeaderWidth:                        "236",
-	TL_SQDataTrackViewControlState:          "1",
-	Monitor_ProgramZoomOut:                  "190897452345600",
-	Monitor_ProgramZoomIn:                   "0",
-	TL_SQTimePerPixel:                       "0.12206059932398784",
-	MZ_EditLine:                             "34326452160000",
-	MZ_Sequence_PreviewFrameSizeHeight:      "1080",
-	MZ_Sequence_PreviewFrameSizeWidth:       "1920",
-	MZ_Sequence_AudioTimeDisplayFormat:      "200",
-	MZ_Sequence_PreviewRenderingClassID:     "1061109567",
-	MZ_Sequence_PreviewRenderingPresetCodec: "1634755443",
-	MZ_Sequence_PreviewRenderingPresetPath:  `EncoderPresets\SequencePreview\9678af98-a7b7-4bdb-b477-7ac9c8df4a4e\QuickTime.epr`,
-	MZ_Sequence_PreviewUseMaxRenderQuality:  "false",
-	MZ_Sequence_PreviewUseMaxBitDepth:       "false",
-	MZ_Sequence_EditingModeGUID:             "9678af98-a7b7-4bdb-b477-7ac9c8df4a4e",
-	MZ_Sequence_VideoTimeDisplayFormat:      "102",
-	MZ_WorkOutPoint:                         "219435023808000",
-	MZ_WorkInPoint:                          "212061193344000",
-	ExplodedTracks:                          "true",
 }
 
 type Sequence struct {
@@ -94,11 +131,6 @@ type Rate struct {
 	Ntsc     string `xml:"ntsc"`
 }
 
-var defaultRate = Rate{
-	30,
-	"TRUE",
-}
-
 type Timecode struct {
 	Rate          Rate   `xml:"rate"`
 	String        string `xml:"string"`
@@ -110,10 +142,6 @@ type Label struct {
 	Label2 string `xml:"label2,omitempty"`
 }
 
-var defaultLabel = Label{
-	"Forest",
-}
-
 type LoggingInfo struct {
 	Description           string `xml:"description"`
 	Scene                 string `xml:"scene"`
@@ -123,8 +151,6 @@ type LoggingInfo struct {
 	Originalvideofilename string `xml:"originalvideofilename"`
 	Originalaudiofilename string `xml:"originalaudiofilename"`
 }
-
-var defautLoggingInfo = LoggingInfo{}
 
 type Media struct {
 	Video Video `xml:"video,omitempty"`
@@ -259,15 +285,95 @@ type Samplecharacteristics struct {
 	SampleRate       int    `xml:"samplerate,omitempty"`
 }
 
-func Constructor(ip Samplecharacteristics) Samplecharacteristics {
-	var op Samplecharacteristics
+func Constructor(ip ...any) {
 
-	val := reflect.ValueOf(ip)
-
-	for i := 0; i < val.NumField(); i++ {
-		feildVal := val.Field(i)
-		fmt.Println(feildVal)
+	if len(ip) > 2 || len(ip) == 0 {
+		panic(fmt.Sprintf("expecpted 1 or 2 got %d", len(ip)))
+	}
+	if _, ok := ip[0].(reflect.Value); !ok && reflect.ValueOf(ip[0]).Kind() != reflect.Ptr {
+		panic(fmt.Sprintf("Got %s, Need %s", reflect.ValueOf(ip[0]).Kind(), reflect.Ptr))
 	}
 
-	return op
+	var ogValue reflect.Value
+	var ogType reflect.Type
+
+	if temp, ok := ip[0].(reflect.Value); ok {
+		ogValue = temp.Elem()
+		ogType = ogValue.Type()
+	} else {
+		ogValue = reflect.ValueOf(ip[0]).Elem()
+		ogType = ogValue.Type()
+
+	}
+
+	var defaultValue reflect.Value
+
+	if len(ip) == 2 {
+		defaultValue = reflect.ValueOf((ip[1]))
+	} else {
+		temp := deafultValues[ogType]
+		defaultValue = reflect.ValueOf(temp)
+	}
+
+	// var typ reflect.Type
+	// var val reflect.Value
+
+	// if temp, ok := ip.(reflect.Value); ok {
+	// 	val = temp.Elem()
+	// 	typ = val.Type()
+	// } else {
+	// 	val = reflect.ValueOf(ip).Elem()
+	// 	typ = val.Type()
+
+	// }
+
+	// defaultObj := deafultValues[typ]
+	// defaultObjVal := reflect.ValueOf(defaultObj)
+
+	deepCopyDefaults(ogValue, defaultValue)
+
+	// if typ.String() != defaultObjVal.Type().String() {
+	// 	panic("Type in default args are in compatiable")
+	// }
+
+	// // fmt.Println(val)
+
+	// // fmt.Println(defaultObjVal)
+
+	// for i := 0; i < typ.NumField(); i++ {
+	// 	structFeild := val.Field(i)
+	// 	defaultStrutObj := defaultObjVal.Field(i)
+
+	// 	if structFeild.IsZero() {
+	// 		if structFeild.Kind() == reflect.Struct {
+	// 			Constructor(structFeild.Addr())
+	// 		} else {
+	// 			structFeild.Set(defaultStrutObj)
+	// 		}
+	// 	}
+	// }
+
+}
+
+func deepCopyDefaults(obj, defaultObj reflect.Value) {
+	if obj.Type() != defaultObj.Type() {
+		panic("Type in default args are in compatiable")
+	}
+
+	// fmt.Println(val)
+
+	// fmt.Println(defaultObjVal)
+
+	for i := 0; i < obj.Type().NumField(); i++ {
+		structFeild := obj.Field(i)
+		defaultStrutObj := defaultObj.Field(i)
+
+		if structFeild.IsZero() {
+			if structFeild.Kind() == reflect.Struct {
+				Constructor(structFeild.Addr())
+			} else {
+				structFeild.Set(defaultStrutObj)
+			}
+		}
+	}
 }
