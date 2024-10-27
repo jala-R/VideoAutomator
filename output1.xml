@@ -2,7 +2,7 @@
 <!DOCTYPE xmeml>
 <xmeml version="4">
 	<sequence id="sequence-1" TL.SQAudioVisibleBase="0" TL.SQVideoVisibleBase="0" TL.SQVisibleBaseTime="0" TL.SQAVDividerPosition="0.5" TL.SQHideShyTracks="0" TL.SQHeaderWidth="236" TL.SQDataTrackViewControlState="1" Monitor.ProgramZoomOut="5373573004800" Monitor.ProgramZoomIn="0" TL.SQTimePerPixel="0.01196542318491731" MZ.EditLine="2542700160000" MZ.Sequence.PreviewFrameSizeHeight="1168" MZ.Sequence.PreviewFrameSizeWidth="876" MZ.Sequence.AudioTimeDisplayFormat="200" MZ.Sequence.PreviewRenderingClassID="1061109567" MZ.Sequence.PreviewRenderingPresetCodec="1634755443" MZ.Sequence.PreviewRenderingPresetPath="EncoderPresets\SequencePreview\9678af98-a7b7-4bdb-b477-7ac9c8df4a4e\QuickTime.epr" MZ.Sequence.PreviewUseMaxRenderQuality="false" MZ.Sequence.PreviewUseMaxBitDepth="false" MZ.Sequence.EditingModeGUID="9678af98-a7b7-4bdb-b477-7ac9c8df4a4e" MZ.Sequence.VideoTimeDisplayFormat="102" MZ.WorkOutPoint="1262874240000" MZ.WorkInPoint="212061193344000" explodedTracks="true">
-		<uuid>8896c97d-db25-4415-9f8b-cec4e53cd2fa</uuid>
+		<uuid>cb531af8-f7ab-4987-92b8-27621729ac95</uuid>
 		<duration>434</duration>
 		<rate>
 			<timebase>30</timebase>
@@ -294,35 +294,208 @@
 						</channel>
 					</group>
 				</outputs>
-				<track TL.SQTrackAudioKeyframeStyle="0" TL.SQTrackShy="0" TL.SQTrackExpandedHeight="25" TL.SQTrackExpanded="0" MZ.TrackTargeted="1" PannerCurrentValue="0.5" PannerIsInverted="true" PannerStartKeyframe="-91445760000000000,0.5,0,0,0,0,0,0" PannerName="Balance" currentExplodedTrackIndex="0" totalExplodedTrackCount="2" premiereTrackType="Stereo">
+				<track TL.SQTrackAudioKeyframeStyle="0" TL.SQTrackShy="0" TL.SQTrackExpandedHeight="25" TL.SQTrackExpanded="0" MZ.TrackTargeted="1" PannerCurrentValue="0.5" PannerStartKeyframe="-91445760000000000,0.5,0,0,0,0,0,0" PannerName="Balance" currentExplodedTrackIndex="0" totalExplodedTrackCount="1" premiereTrackType="Stereo">
+					<clipitem id="clipitem-4" premiereChannelType="mono">
+						<masterclipid>masterclip-4</masterclipid>
+						<name>fin.wav</name>
+						<enabled>TRUE</enabled>
+						<duration>49616</duration>
+						<rate>
+							<timebase>30</timebase>
+							<ntsc>TRUE</ntsc>
+						</rate>
+						<start>0</start>
+						<end>91</end>
+						<in>0</in>
+						<out>91</out>
+						<pproTicksIn>0</pproTicksIn>
+						<pproTicksOut>771285715200</pproTicksOut>
+						<file id="file-4">
+							<name>fin.wav</name>
+							<pathurl>file://localhost/E%3a/Spirituality/Ethereal%20seekers/61)Why%20chosen%20one%20Become%20Monsters/fin.wav</pathurl>
+							<rate>
+								<timebase>30</timebase>
+								<ntsc>TRUE</ntsc>
+							</rate>
+							<duration>49616</duration>
+							<timecode>
+								<rate>
+									<timebase>30</timebase>
+									<ntsc>TRUE</ntsc>
+								</rate>
+								<string>00;00;00;00</string>
+								<frame>0</frame>
+								<displayformat>DF</displayformat>
+							</timecode>
+							<media>
+								<audio>
+									<samplecharacteristics>
+										<depth>16</depth>
+										<samplerate>44100</samplerate>
+									</samplecharacteristics>
+									<channelcount>1</channelcount>
+									<audiochannel>
+										<sourcechannel>1</sourcechannel>
+									</audiochannel>
+								</audio>
+							</media>
+						</file>
+						<sourcetrack>
+							<mediatype>audio</mediatype>
+							<trackindex>1</trackindex>
+						</sourcetrack>
+						<logginginfo>
+							<description></description>
+							<scene></scene>
+							<shottake></shottake>
+							<lognote></lognote>
+							<good></good>
+							<originalvideofilename></originalvideofilename>
+							<originalaudiofilename></originalaudiofilename>
+						</logginginfo>
+						<colorinfo>
+							<lut></lut>
+							<lut1></lut1>
+							<asc_sop></asc_sop>
+							<asc_sat></asc_sat>
+							<lut2></lut2>
+						</colorinfo>
+					</clipitem>
+					<clipitem id="clipitem-5" premiereChannelType="mono">
+						<masterclipid>masterclip-5</masterclipid>
+						<name>fin.wav</name>
+						<enabled>TRUE</enabled>
+						<duration>49616</duration>
+						<rate>
+							<timebase>30</timebase>
+							<ntsc>TRUE</ntsc>
+						</rate>
+						<start>91</start>
+						<end>240</end>
+						<in>91</in>
+						<out>240</out>
+						<pproTicksIn>771285715200</pproTicksIn>
+						<pproTicksOut>2034160128000</pproTicksOut>
+						<file id="file-5">
+							<name>fin.wav</name>
+							<pathurl>file://localhost/E%3a/Spirituality/Ethereal%20seekers/61)Why%20chosen%20one%20Become%20Monsters/fin.wav</pathurl>
+							<rate>
+								<timebase>30</timebase>
+								<ntsc>TRUE</ntsc>
+							</rate>
+							<duration>49616</duration>
+							<timecode>
+								<rate>
+									<timebase>30</timebase>
+									<ntsc>TRUE</ntsc>
+								</rate>
+								<string>00;00;00;00</string>
+								<frame>0</frame>
+								<displayformat>DF</displayformat>
+							</timecode>
+							<media>
+								<audio>
+									<samplecharacteristics>
+										<depth>16</depth>
+										<samplerate>44100</samplerate>
+									</samplecharacteristics>
+									<channelcount>1</channelcount>
+									<audiochannel>
+										<sourcechannel>1</sourcechannel>
+									</audiochannel>
+								</audio>
+							</media>
+						</file>
+						<sourcetrack>
+							<mediatype>audio</mediatype>
+							<trackindex>1</trackindex>
+						</sourcetrack>
+						<logginginfo>
+							<description></description>
+							<scene></scene>
+							<shottake></shottake>
+							<lognote></lognote>
+							<good></good>
+							<originalvideofilename></originalvideofilename>
+							<originalaudiofilename></originalaudiofilename>
+						</logginginfo>
+						<colorinfo>
+							<lut></lut>
+							<lut1></lut1>
+							<asc_sop></asc_sop>
+							<asc_sat></asc_sat>
+							<lut2></lut2>
+						</colorinfo>
+					</clipitem>
+					<clipitem id="clipitem-6" premiereChannelType="mono">
+						<masterclipid>masterclip-6</masterclipid>
+						<name>fin.wav</name>
+						<enabled>TRUE</enabled>
+						<duration>49616</duration>
+						<rate>
+							<timebase>30</timebase>
+							<ntsc>TRUE</ntsc>
+						</rate>
+						<start>269</start>
+						<end>434</end>
+						<in>269</in>
+						<out>434</out>
+						<pproTicksIn>2279954476800</pproTicksIn>
+						<pproTicksOut>3678439564800</pproTicksOut>
+						<file id="file-6">
+							<name>fin.wav</name>
+							<pathurl>file://localhost/E%3a/Spirituality/Ethereal%20seekers/61)Why%20chosen%20one%20Become%20Monsters/fin.wav</pathurl>
+							<rate>
+								<timebase>30</timebase>
+								<ntsc>TRUE</ntsc>
+							</rate>
+							<duration>49616</duration>
+							<timecode>
+								<rate>
+									<timebase>30</timebase>
+									<ntsc>TRUE</ntsc>
+								</rate>
+								<string>00;00;00;00</string>
+								<frame>0</frame>
+								<displayformat>DF</displayformat>
+							</timecode>
+							<media>
+								<audio>
+									<samplecharacteristics>
+										<depth>16</depth>
+										<samplerate>44100</samplerate>
+									</samplecharacteristics>
+									<channelcount>1</channelcount>
+									<audiochannel>
+										<sourcechannel>1</sourcechannel>
+									</audiochannel>
+								</audio>
+							</media>
+						</file>
+						<sourcetrack>
+							<mediatype>audio</mediatype>
+							<trackindex>1</trackindex>
+						</sourcetrack>
+						<logginginfo>
+							<description></description>
+							<scene></scene>
+							<shottake></shottake>
+							<lognote></lognote>
+							<good></good>
+							<originalvideofilename></originalvideofilename>
+							<originalaudiofilename></originalaudiofilename>
+						</logginginfo>
+						<colorinfo>
+							<lut></lut>
+							<lut1></lut1>
+							<asc_sop></asc_sop>
+							<asc_sat></asc_sat>
+							<lut2></lut2>
+						</colorinfo>
+					</clipitem>
 					<enabled>TRUE</enabled>
 					<locked>FALSE</locked>
 					<outputchannelindex>1</outputchannelindex>
-				</track>
-				<track TL.SQTrackAudioKeyframeStyle="0" TL.SQTrackShy="0" TL.SQTrackExpandedHeight="25" TL.SQTrackExpanded="0" MZ.TrackTargeted="1" PannerCurrentValue="0.5" PannerIsInverted="true" PannerStartKeyframe="-91445760000000000,0.5,0,0,0,0,0,0" PannerName="Balance" currentExplodedTrackIndex="1" totalExplodedTrackCount="2" premiereTrackType="Stereo">
-					<enabled>TRUE</enabled>
-					<locked>FALSE</locked>
-					<outputchannelindex>2</outputchannelindex>
-				</track>
-				<track TL.SQTrackAudioKeyframeStyle="0" TL.SQTrackShy="0" TL.SQTrackExpandedHeight="25" TL.SQTrackExpanded="0" MZ.TrackTargeted="1" PannerCurrentValue="0.5" PannerIsInverted="true" PannerStartKeyframe="-91445760000000000,0.5,0,0,0,0,0,0" PannerName="Balance" currentExplodedTrackIndex="0" totalExplodedTrackCount="2" premiereTrackType="Stereo">
-					<enabled>TRUE</enabled>
-					<locked>FALSE</locked>
-					<outputchannelindex>1</outputchannelindex>
-				</track>
-				<track TL.SQTrackAudioKeyframeStyle="0" TL.SQTrackShy="0" TL.SQTrackExpandedHeight="25" TL.SQTrackExpanded="0" MZ.TrackTargeted="1" PannerCurrentValue="0.5" PannerIsInverted="true" PannerStartKeyframe="-91445760000000000,0.5,0,0,0,0,0,0" PannerName="Balance" currentExplodedTrackIndex="1" totalExplodedTrackCount="2" premiereTrackType="Stereo">
-					<enabled>TRUE</enabled>
-					<locked>FALSE</locked>
-					<outputchannelindex>2</outputchannelindex>
-				</track>
-				<track TL.SQTrackAudioKeyframeStyle="0" TL.SQTrackShy="0" TL.SQTrackExpandedHeight="25" TL.SQTrackExpanded="0" MZ.TrackTargeted="1" PannerCurrentValue="0.5" PannerIsInverted="true" PannerStartKeyframe="-91445760000000000,0.5,0,0,0,0,0,0" PannerName="Balance" currentExplodedTrackIndex="0" totalExplodedTrackCount="2" premiereTrackType="Stereo">
-					<enabled>TRUE</enabled>
-					<locked>FALSE</locked>
-					<outputchannelindex>1</outputchannelindex>
-				</track>
-				<track TL.SQTrackAudioKeyframeStyle="0" TL.SQTrackShy="0" TL.SQTrackExpandedHeight="25" TL.SQTrackExpanded="0" MZ.TrackTargeted="1" PannerCurrentValue="0.5" PannerIsInverted="true" PannerStartKeyframe="-91445760000000000,0.5,0,0,0,0,0,0" PannerName="Balance" currentExplodedTrackIndex="1" totalExplodedTrackCount="2" premiereTrackType="Stereo">
-					<enabled>TRUE</enabled>
-					<locked>FALSE</locked>
-					<outputchannelindex>2</outputchannelindex>
 				</track>
 			</audio>
 		</media>

@@ -55,7 +55,7 @@ func main() {
 	a.Sequence.Media.Audio.Format.Samplecharacteristics.Depth = 16
 	a.Sequence.Media.Audio.Format.Samplecharacteristics.SampleRate = 44100
 
-	a.Sequence.Media.Audio.Outputs = types.Outputs{
+	a.Sequence.Media.Audio.Outputs = &types.Outputs{
 		Group: []types.Group{
 			GetGroups(1),
 			GetGroups(2),
@@ -64,16 +64,13 @@ func main() {
 
 	//Add Audio Tracks
 
-	for i := 1; i <= 6; i++ {
-		oneOr2 := 1
-		if i%2 == 0 {
-			oneOr2 = 2
-		}
-		temp := GetAudioTrack(oneOr2)
+	for i := 1; i <= 1; i++ {
+		temp := GetAudioTrack(i)
 		types.Constructor(&temp)
 		a.Sequence.Media.Audio.Track = append(a.Sequence.Media.Audio.Track, temp)
-
 	}
+	a.Sequence.Media.Audio.Samplecharacteristics = nil
+	a.Sequence.Media.Audio.Audiochannel = nil
 
 	xmlData, _ := xml.MarshalIndent(a, "", "	")
 	xmlData = append(xmlData, byte('\n'))
@@ -96,25 +93,82 @@ func main() {
 
 func GetAudioTrack(ind int) types.Track {
 	var track = types.Track{}
+	types.Constructor(&track)
 	track.TL_SQTrackAudioKeyframeStyle = "0"
 	track.TL_SQTrackShy = "0"
 	track.TL_SQTrackExpandedHeight = "25"
 	track.TL_SQTrackAudioKeyframeStyle = "0"
 	track.MZ_TrackTargeted = "1"
 	track.PannerCurrentValue = "0.5"
-	track.PannerIsInverted = "true"
 	track.PannerStartKeyframe = "-91445760000000000,0.5,0,0,0,0,0,0"
 	track.PannerName = "Balance"
-	track.TotalExplodedTrackCount = "2"
+	track.TotalExplodedTrackCount = "1"
 	track.TL_SQTrackExpanded = "0"
-	var val = "0"
-	if ind%2 == 0 {
-		val = "1"
-	}
-	track.CurrentExplodedTrackIndex = val
+	track.CurrentExplodedTrackIndex = fmt.Sprintf("%d", ind-1)
 	track.PremiereTrackType = "Stereo"
 	track.Outputchannelindex = ind
+	track.Clipitems = GetAudioClipItems()
 	return track
+}
+
+func GetAudioClipItems() []types.Clipitem {
+	var clips []types.Clipitem
+	clips = append(clips, getAudioClip(4, "fin.wav", 0, 91))
+	clips = append(clips, getAudioClip(5, "fin.wav", 91, 240))
+	clips = append(clips, getAudioClip(6, "fin.wav", 269, 434))
+	return clips
+}
+
+func getAudioClip(ind int, fileName string, start, end int) types.Clipitem {
+	var clip = types.Clipitem{}
+	types.Constructor(&clip)
+	var tickMeasure = 8475667200
+	clip.Id = fmt.Sprintf("clipitem-%d", ind)
+	clip.PremiereChannelType = "mono"
+	clip.MasterClipId = fmt.Sprintf("masterclip-%d", ind)
+	clip.Name = fileName
+	clip.Duration = int64(49616)
+	clip.Start = start
+	clip.End = end
+	clip.In = int64(start)
+	clip.Out = int64(end)
+	clip.PproTicksIn = strconv.FormatUint(uint64(clip.Start)*uint64(tickMeasure), 10)
+	clip.PproTicksOut = strconv.FormatUint(uint64(clip.End)*uint64(tickMeasure), 10)
+	clip.Alphatype = ""
+	clip.Pixelaspectratio = ""
+	clip.Anamorphic = ""
+	clip.File = getAudioFile(ind, fileName)
+	clip.Filter = nil
+	clip.Sourcetrack.Mediatype = "audio"
+	clip.Sourcetrack.Trackindex = 1
+	clip.Label = nil
+	return clip
+}
+
+func getAudioFile(ind int, fileName string) types.File {
+	var file = types.File{}
+	types.Constructor(&file)
+
+	file.Id = fmt.Sprintf("file-%d", ind)
+	file.Name = fileName
+	file.PathUrl = fmt.Sprintf("file://localhost/E%%3a/Spirituality/Ethereal%%20seekers/61)Why%%20chosen%%20one%%20Become%%20Monsters/%s", fileName)
+	file.Duration = 49616
+	file.Media.Video = nil
+	file.Media.Audio.Samplecharacteristics.Depth = 16
+	file.Media.Audio.Samplecharacteristics.SampleRate = 44100
+	file.Media.Audio.Samplecharacteristics.Rate = nil
+	file.Media.Audio.Samplecharacteristics.Codec = nil
+	file.Media.Audio.Samplecharacteristics.Width = 0
+	file.Media.Audio.Samplecharacteristics.Height = 0
+	file.Media.Audio.Samplecharacteristics.Anamorphic = ""
+	file.Media.Audio.Samplecharacteristics.Pixelaspectratio = ""
+	file.Media.Audio.Samplecharacteristics.Fielddominance = ""
+	file.Media.Audio.Samplecharacteristics.Colordepth = ""
+	file.Media.Audio.Channelcount = 1
+	file.Media.Audio.Audiochannel.Sourcechannel = 1
+	file.Media.Audio.Format = nil
+	file.Media.Audio.Outputs = nil
+	return file
 }
 
 func getVideoClipItems() []types.Clipitem {
@@ -147,6 +201,7 @@ func GetVideoClipItem(clipID int, name string, start int, end int) types.Clipite
 	clip.PproTicksOut = strconv.FormatUint(uint64(tickMeasure)*uint64(clip.Out), 10)
 	clip.Label.Label2 = "Lavender"
 	clip.File = getVideoFile(clipID)
+	clip.Sourcetrack = nil
 	clip.Filter = nil
 
 	return clip

@@ -67,6 +67,7 @@ var deafultValues = map[reflect.Type]interface{}{
 		Alphatype:        "none",
 		Pixelaspectratio: "square",
 		Anamorphic:       "FALSE",
+		Enabled:          "TRUE",
 	},
 	reflect.TypeOf(ColourInfo{}): ColourInfo{},
 	reflect.TypeOf(File{}):       File{},
@@ -95,6 +96,8 @@ var deafultValues = map[reflect.Type]interface{}{
 		Fielddominance:   "none",
 		Colordepth:       "24",
 	},
+	reflect.TypeOf(Audiochannel{}): Audiochannel{},
+	reflect.TypeOf(Sourcetrack{}):  Sourcetrack{},
 }
 
 type Xmeml struct {
@@ -177,10 +180,17 @@ type Video struct {
 }
 
 type Audio struct {
-	NumOutputChannels int     `xml:"numOutputChannels"`
-	Format            Format  `xml:"format"`
-	Outputs           Outputs `xml:"outputs"`
-	Track             []Track `xml:"track"`
+	NumOutputChannels     int                    `xml:"numOutputChannels,omitempty"`
+	Format                *Format                `xml:"format,omitempty"`
+	Outputs               *Outputs               `xml:"outputs,omitempty"`
+	Track                 []Track                `xml:"track,omitempty"`
+	Samplecharacteristics *Samplecharacteristics `xml:"samplecharacteristics,omitempty"`
+	Channelcount          int                    `xml:"channelcount,omitempty"`
+	Audiochannel          *Audiochannel          `xml:"audiochannel,omitempty"`
+}
+
+type Audiochannel struct {
+	Sourcechannel int `xml:"sourcechannel,omitempty"`
 }
 
 type Format struct {
@@ -217,26 +227,33 @@ type Track struct {
 }
 
 type Clipitem struct {
-	Id               string      `xml:"id,attr"`
-	MasterClipId     string      `xml:"masterclipid"`
-	Name             string      `xml:"name"`
-	Enabled          string      `xml:"enabled"`
-	Duration         int64       `xml:"duration"`
-	Rate             Rate        `xml:"rate"`
-	Start            int         `xml:"start"`
-	End              int         `xml:"end"`
-	In               int64       `xml:"in"`
-	Out              int64       `xml:"out"`
-	PproTicksIn      string      `xml:"pproTicksIn"`
-	PproTicksOut     string      `xml:"pproTicksOut"`
-	Alphatype        string      `xml:"alphatype"`
-	Pixelaspectratio string      `xml:"pixelaspectratio"`
-	Anamorphic       string      `xml:"anamorphic"`
-	File             File        `xml:"file"`
-	Filter           *Filter     `xml:"filter"`
-	LoggingInfo      LoggingInfo `xml:"logginginfo"`
-	ColourInfo       ColourInfo  `xml:"colorinfo"`
-	Label            Label       `xml:"labels"`
+	Id                  string       `xml:"id,attr"`
+	PremiereChannelType string       `xml:"premiereChannelType,attr,omitempty"`
+	MasterClipId        string       `xml:"masterclipid"`
+	Name                string       `xml:"name"`
+	Enabled             string       `xml:"enabled"`
+	Duration            int64        `xml:"duration"`
+	Rate                Rate         `xml:"rate"`
+	Start               int          `xml:"start"`
+	End                 int          `xml:"end"`
+	In                  int64        `xml:"in"`
+	Out                 int64        `xml:"out"`
+	PproTicksIn         string       `xml:"pproTicksIn"`
+	PproTicksOut        string       `xml:"pproTicksOut"`
+	Alphatype           string       `xml:"alphatype,omitempty"`
+	Pixelaspectratio    string       `xml:"pixelaspectratio,omitempty"`
+	Anamorphic          string       `xml:"anamorphic,omitempty"`
+	File                File         `xml:"file"`
+	Filter              *Filter      `xml:"filter"`
+	Sourcetrack         *Sourcetrack `xml:"sourcetrack,omitempty"`
+	LoggingInfo         LoggingInfo  `xml:"logginginfo"`
+	ColourInfo          ColourInfo   `xml:"colorinfo"`
+	Label               *Label       `xml:"labels"`
+}
+
+type Sourcetrack struct {
+	Mediatype  string `xml:"mediatype,omitempty"`
+	Trackindex int    `xml:"trackindex,omitempty"`
 }
 
 type ColourInfo struct {
@@ -252,6 +269,7 @@ type File struct {
 	Name     string   `xml:"name"`
 	PathUrl  string   `xml:"pathurl"`
 	Rate     Rate     `xml:"rate"`
+	Duration int      `xml:"duration,omitempty"`
 	Timecode Timecode `xml:"timecode"`
 	Media    Media    `xml:"media"`
 }
