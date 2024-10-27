@@ -41,9 +41,9 @@ var deafultValues = map[reflect.Type]interface{}{
 		"TRUE",
 	},
 	reflect.TypeOf(Timecode{}): Timecode{
-		String:        "00:00:00:00",
+		String:        "00;00;00;00",
 		Frame:         0,
-		DispalyFormat: "NDF",
+		DispalyFormat: "DF",
 	},
 	reflect.TypeOf(Label{}): Label{
 		Label2: "Caribbean",
@@ -55,13 +55,24 @@ var deafultValues = map[reflect.Type]interface{}{
 	reflect.TypeOf(Format{}):      Format{},
 	reflect.TypeOf(Outputs{}):     Outputs{},
 	reflect.TypeOf(Group{}):       Group{},
-	reflect.TypeOf(Track{}):       Track{},
-	reflect.TypeOf(Clipitem{}):    Clipitem{},
-	reflect.TypeOf(ColourInfo{}):  ColourInfo{},
-	reflect.TypeOf(File{}):        File{},
-	reflect.TypeOf(Filter{}):      Filter{},
-	reflect.TypeOf(Effect{}):      Effect{},
-	reflect.TypeOf(Parameter{}):   Parameter{},
+	reflect.TypeOf(Track{}): Track{
+		TL_SQTrackShy:            "0",
+		TL_SQTrackExpandedHeight: "25",
+		TL_SQTrackExpanded:       "0",
+		MZ_TrackTargeted:         "0",
+		Enabled:                  "TRUE",
+		Locked:                   "FALSE",
+	},
+	reflect.TypeOf(Clipitem{}): Clipitem{
+		Alphatype:        "none",
+		Pixelaspectratio: "square",
+		Anamorphic:       "FALSE",
+	},
+	reflect.TypeOf(ColourInfo{}): ColourInfo{},
+	reflect.TypeOf(File{}):       File{},
+	reflect.TypeOf(Filter{}):     Filter{},
+	reflect.TypeOf(Effect{}):     Effect{},
+	reflect.TypeOf(Parameter{}):  Parameter{},
 	reflect.TypeOf(Codec{}): Codec{
 		Name:            "Apple ProRes 422",
 		AppName:         "Final Cut Pro",
@@ -113,7 +124,7 @@ type Sequence struct {
 	MZ_Sequence_PreviewRenderingPresetPath  string      `xml:"MZ.Sequence.PreviewRenderingPresetPath,attr"`
 	MZ_Sequence_PreviewUseMaxRenderQuality  string      `xml:"MZ.Sequence.PreviewUseMaxRenderQuality,attr"`
 	MZ_Sequence_PreviewUseMaxBitDepth       string      `xml:"MZ.Sequence.PreviewUseMaxBitDepth,attr"`
-	MZ_Sequence_EditingModeGUID             string      `xml:"MZ_Sequence_EditingModeGUID,attr"`
+	MZ_Sequence_EditingModeGUID             string      `xml:"MZ.Sequence.EditingModeGUID,attr"`
 	MZ_Sequence_VideoTimeDisplayFormat      string      `xml:"MZ.Sequence.VideoTimeDisplayFormat,attr"`
 	MZ_WorkOutPoint                         string      `xml:"MZ.WorkOutPoint,attr"`
 	MZ_WorkInPoint                          string      `xml:"MZ.WorkInPoint,attr"`
@@ -155,8 +166,8 @@ type LoggingInfo struct {
 }
 
 type Media struct {
-	Video Video `xml:"video,omitempty"`
-	Audio Audio `xml:"audio,omitempty"`
+	Video *Video `xml:"video,omitempty"`
+	Audio *Audio `xml:"audio,omitempty"`
 }
 
 type Video struct {
@@ -187,13 +198,22 @@ type Group struct {
 }
 
 type Track struct {
-	TL_SQTrackShy            string     `xml:"TL.SQTrackShy,attr"`
-	TL_SQTrackExpandedHeight string     `xml:"TL.SQTrackExpandedHeight,attr"`
-	TL_SQTrackExpanded       string     `xml:"TL.SQTrackExpanded,attr"`
-	MZ_TrackTargeted         string     `xml:"MZ.TrackTargeted,attr"`
-	Clipitems                []Clipitem `xml:"clipitem"`
-	Enabled                  string     `xml:"enabled"`
-	Locked                   string     `xml:"locked"`
+	TL_SQTrackAudioKeyframeStyle string     `xml:"TL.SQTrackAudioKeyframeStyle,attr,omitempty"`
+	TL_SQTrackShy                string     `xml:"TL.SQTrackShy,attr"`
+	TL_SQTrackExpandedHeight     string     `xml:"TL.SQTrackExpandedHeight,attr"`
+	TL_SQTrackExpanded           string     `xml:"TL.SQTrackExpanded,attr"`
+	MZ_TrackTargeted             string     `xml:"MZ.TrackTargeted,attr"`
+	PannerCurrentValue           string     `xml:"PannerCurrentValue,attr,omitempty"`
+	PannerIsInverted             string     `xml:"PannerIsInverted,attr,omitempty"`
+	PannerStartKeyframe          string     `xml:"PannerStartKeyframe,attr,omitempty"`
+	PannerName                   string     `xml:"PannerName,attr,omitempty"`
+	CurrentExplodedTrackIndex    string     `xml:"currentExplodedTrackIndex,attr,omitempty"`
+	TotalExplodedTrackCount      string     `xml:"totalExplodedTrackCount,attr,omitempty"`
+	PremiereTrackType            string     `xml:"premiereTrackType,attr,omitempty"`
+	Clipitems                    []Clipitem `xml:"clipitem"`
+	Enabled                      string     `xml:"enabled"`
+	Locked                       string     `xml:"locked"`
+	Outputchannelindex           int        `xml:"outputchannelindex,omitempty"`
 }
 
 type Clipitem struct {
@@ -213,7 +233,7 @@ type Clipitem struct {
 	Pixelaspectratio string      `xml:"pixelaspectratio"`
 	Anamorphic       string      `xml:"anamorphic"`
 	File             File        `xml:"file"`
-	Filter           Filter      `xml:"filter"`
+	Filter           *Filter     `xml:"filter"`
 	LoggingInfo      LoggingInfo `xml:"logginginfo"`
 	ColourInfo       ColourInfo  `xml:"colorinfo"`
 	Label            Label       `xml:"labels"`
@@ -275,7 +295,7 @@ type Codec struct {
 }
 
 type Samplecharacteristics struct {
-	Rate             Rate   `xml:"rate,omitempty"`
+	Rate             *Rate  `xml:"rate,omitempty"`
 	Codec            *Codec `xml:"codec,omitempty"`
 	Width            int    `xml:"width,omitempty"`
 	Height           int    `xml:"height,omitempty"`

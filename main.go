@@ -14,74 +14,69 @@ const XMLHEADER = `<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE xmeml>
 `
 
-type Temp struct {
-}
-
 func main() {
 
-	xeml := types.Xmeml{}
-	types.Constructor(&xeml)
-	xeml.Sequence.Uuid = uuid.NewString()
-	frameRate := 30
+	a := types.Xmeml{}
+	types.Constructor(&a)
 
-	xeml.Sequence.Label.Label2 = "Forest"
-	xeml.Sequence.Timecode.DispalyFormat = "DF"
+	a.Sequence.Uuid = uuid.NewString()
+	a.Sequence.Duration = 434
+	a.Sequence.Name = "Test Trail 1"
+	a.Sequence.Label.Label2 = "Forest"
+	a.Sequence.Media.Video.Samplecharacteristics = nil
 
-	clipOneDuration := 4.96 * float64(frameRate)
+	//set video videoTracks
+	var videoTracks []types.Track
 
-	xeml.Sequence.Duration = int64(clipOneDuration)
-	xeml.Sequence.Name = "Test1 project"
+	var v1 types.Track = types.Track{}
+	var v2 types.Track = types.Track{}
+	var v3 types.Track = types.Track{}
+	types.Constructor(&v1)
+	types.Constructor(&v2)
+	types.Constructor(&v3)
+	v1.MZ_TrackTargeted = "1"
+	v1.Clipitems = getVideoClipItems()
 
-	tickConversion := 8475667200
+	videoTracks = append(videoTracks, v1, v2, v3)
+	a.Sequence.Media.Video.Track = videoTracks
 
-	clip1 := types.Clipitem{}
-	clip1.Id = "clipitem-1"
-	clip1.MasterClipId = "masterclip-1"
-	clip1.Name = "Test1 clippp"
-	clip1.Enabled = "TRUE"
-	clip1.Duration = 1294705
-	clip1.Start = 0
-	clip1.End = int(clipOneDuration)
-	clip1.In = 107892
-	clip1.Out = clip1.In + (int64(clip1.End) - int64(clip1.Start))
-	clip1.PproTicksIn = strconv.Itoa(int(clip1.In) * int(tickConversion))
-	clip1.PproTicksOut = strconv.Itoa(int(clip1.Out) * int(tickConversion))
-	// fmt.Println(strconv.FormatUint())
-	clip1.Alphatype = "none"
-	clip1.Pixelaspectratio = "square"
-	clip1.Anamorphic = "FALSE"
+	//set audio tracks
+	// var audioTracks []types.Track
 
-	ClipFile := types.File{
-		Id:      "file-1",
-		Name:    "File 1 name",
-		PathUrl: `file:///D:/Etheral%20SEEkers/Pictures/new%20oilpainted%20pics/1.jpg`,
-	}
+	a.Sequence.Media.Audio.NumOutputChannels = 2
+	a.Sequence.Media.Audio.Format.Samplecharacteristics.Rate = nil
+	a.Sequence.Media.Audio.Format.Samplecharacteristics.Codec = nil
+	a.Sequence.Media.Audio.Format.Samplecharacteristics.Width = 0
+	a.Sequence.Media.Audio.Format.Samplecharacteristics.Height = 0
+	a.Sequence.Media.Audio.Format.Samplecharacteristics.Anamorphic = ""
+	a.Sequence.Media.Audio.Format.Samplecharacteristics.Pixelaspectratio = ""
+	a.Sequence.Media.Audio.Format.Samplecharacteristics.Fielddominance = ""
+	a.Sequence.Media.Audio.Format.Samplecharacteristics.Colordepth = ""
+	a.Sequence.Media.Audio.Format.Samplecharacteristics.Depth = 16
+	a.Sequence.Media.Audio.Format.Samplecharacteristics.SampleRate = 44100
 
-	ClipFile.Media.Video.Samplecharacteristics = &types.Samplecharacteristics{
-		Width:  876,
-		Height: 1168,
-	}
-
-	// types.Constructor(ClipFile.Media.Video.Samplecharacteristics)
-
-	types.Constructor(&ClipFile)
-	types.Constructor(&clip1)
-	clip1.File = ClipFile
-
-	// xeml.Sequence.Media.Video.Format.Samplecharacteristics.Colordepth = ""
-	xeml.Sequence.Media.Video.Track = []types.Track{
-		{
-			TL_SQTrackShy:            "0",
-			TL_SQTrackExpandedHeight: "25",
-			TL_SQTrackExpanded:       "0",
-			MZ_TrackTargeted:         "1",
-			Enabled:                  "TRUE",
-			Locked:                   "FALSE",
-			Clipitems:                []types.Clipitem{clip1},
+	a.Sequence.Media.Audio.Outputs = types.Outputs{
+		Group: []types.Group{
+			GetGroups(1),
+			GetGroups(2),
 		},
 	}
 
-	xmlData, _ := xml.MarshalIndent(xeml, "", "	")
+	//Add Audio Tracks
+
+	for i := 1; i <= 6; i++ {
+		oneOr2 := 1
+		if i%2 == 0 {
+			oneOr2 = 2
+		}
+		temp := GetAudioTrack(oneOr2)
+		types.Constructor(&temp)
+		a.Sequence.Media.Audio.Track = append(a.Sequence.Media.Audio.Track, temp)
+
+	}
+
+	xmlData, _ := xml.MarshalIndent(a, "", "	")
+	xmlData = append(xmlData, byte('\n'))
 
 	file, err := os.Create("./output1.xml")
 	if err != nil {
@@ -92,4 +87,99 @@ func main() {
 	file.Write([]byte(XMLHEADER))
 	file.Write(xmlData)
 	file.Close()
+}
+
+// func GetVideoTrack() types.Track{
+// 	var track = types.Track{}
+// 	// track.TL_SQVisibleBaseTime
+// }
+
+func GetAudioTrack(ind int) types.Track {
+	var track = types.Track{}
+	track.TL_SQTrackAudioKeyframeStyle = "0"
+	track.TL_SQTrackShy = "0"
+	track.TL_SQTrackExpandedHeight = "25"
+	track.TL_SQTrackAudioKeyframeStyle = "0"
+	track.MZ_TrackTargeted = "1"
+	track.PannerCurrentValue = "0.5"
+	track.PannerIsInverted = "true"
+	track.PannerStartKeyframe = "-91445760000000000,0.5,0,0,0,0,0,0"
+	track.PannerName = "Balance"
+	track.TotalExplodedTrackCount = "2"
+	track.TL_SQTrackExpanded = "0"
+	var val = "0"
+	if ind%2 == 0 {
+		val = "1"
+	}
+	track.CurrentExplodedTrackIndex = val
+	track.PremiereTrackType = "Stereo"
+	track.Outputchannelindex = ind
+	return track
+}
+
+func getVideoClipItems() []types.Clipitem {
+
+	var clips []types.Clipitem
+	var clip1 = GetVideoClipItem(1, "Clip1", 0, 91)
+	var clip2 = GetVideoClipItem(2, "Clip2", 91, 240)
+	var clip3 = GetVideoClipItem(3, "Clip3", 269, 434)
+
+	clips = append(clips, clip1, clip2, clip3)
+	return clips
+}
+
+func GetVideoClipItem(clipID int, name string, start int, end int) types.Clipitem {
+
+	var clipIn int64 = 107892
+	var tickMeasure = 8475667200
+	var clip = types.Clipitem{}
+	types.Constructor(&clip)
+	clip.Id = fmt.Sprintf("clipitem-%d", clipID)
+	clip.MasterClipId = fmt.Sprintf("masterclip-%d", clipID)
+	clip.Name = name
+	clip.Enabled = "TRUE"
+	clip.Duration = 1294705
+	clip.Start = start
+	clip.End = end
+	clip.In = clipIn
+	clip.Out = clip.In + int64(clip.End) - int64(clip.Start)
+	clip.PproTicksIn = strconv.FormatUint(uint64(tickMeasure)*uint64(clip.In), 10)
+	clip.PproTicksOut = strconv.FormatUint(uint64(tickMeasure)*uint64(clip.Out), 10)
+	clip.Label.Label2 = "Lavender"
+	clip.File = getVideoFile(clipID)
+	clip.Filter = nil
+
+	return clip
+}
+
+func getVideoFile(fileId int) types.File {
+	var file types.File = types.File{}
+	types.Constructor(&file)
+
+	file.Id = fmt.Sprintf("file-%d", fileId)
+	file.Name = fmt.Sprintf("%d.png", fileId)
+	file.PathUrl = fmt.Sprintf("file://localhost/D%%3a/Etheral%%20SEEkers/Pictures/new%%20oilpainted%%20pics/%d.png", fileId)
+	file.Media = types.Media{}
+	types.Constructor(&file.Media)
+	file.Media.Audio = nil
+	file.Media.Video.Format = nil
+	file.Media.Video.Samplecharacteristics.Codec = nil
+	file.Media.Video.Samplecharacteristics.Colordepth = ""
+
+	FileTimeCode(&file.Timecode)
+	return file
+}
+
+func FileTimeCode(timecode *types.Timecode) {
+	timecode.String = "00:00:00:00"
+	timecode.DispalyFormat = "NDF"
+}
+
+func GetGroups(ind int) types.Group {
+	var group = types.Group{}
+	group.Index = ind
+	group.Numchannel = 1
+	group.Downmix = 0
+	group.IChannelIndex = ind
+	return group
 }
