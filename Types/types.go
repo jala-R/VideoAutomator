@@ -10,20 +10,20 @@ var deafultValues = map[reflect.Type]interface{}{
 		Version: "4",
 	},
 	reflect.TypeOf(Sequence{}): Sequence{
-		Id:                                      "sequence",
+		Id:                                      "sequence-1",
 		TL_SQAudioVisibleBase:                   "0",
 		TL_SQVideoVisibleBase:                   "0",
-		TL_SQVisibleBaseTime:                    "19964966382570",
+		TL_SQVisibleBaseTime:                    "0",
 		TL_SQAVDividerPosition:                  "0.5",
 		TL_SQHideShyTracks:                      "0",
 		TL_SQHeaderWidth:                        "236",
 		TL_SQDataTrackViewControlState:          "1",
-		Monitor_ProgramZoomOut:                  "190897452345600",
+		Monitor_ProgramZoomOut:                  "5373573004800",
 		Monitor_ProgramZoomIn:                   "0",
-		TL_SQTimePerPixel:                       "0.12206059932398784",
-		MZ_EditLine:                             "34326452160000",
-		MZ_Sequence_PreviewFrameSizeHeight:      "1080",
-		MZ_Sequence_PreviewFrameSizeWidth:       "1920",
+		TL_SQTimePerPixel:                       "0.01196542318491731",
+		MZ_EditLine:                             "2542700160000",
+		MZ_Sequence_PreviewFrameSizeHeight:      "1168",
+		MZ_Sequence_PreviewFrameSizeWidth:       "876",
 		MZ_Sequence_AudioTimeDisplayFormat:      "200",
 		MZ_Sequence_PreviewRenderingClassID:     "1061109567",
 		MZ_Sequence_PreviewRenderingPresetCodec: "1634755443",
@@ -32,7 +32,7 @@ var deafultValues = map[reflect.Type]interface{}{
 		MZ_Sequence_PreviewUseMaxBitDepth:       "false",
 		MZ_Sequence_EditingModeGUID:             "9678af98-a7b7-4bdb-b477-7ac9c8df4a4e",
 		MZ_Sequence_VideoTimeDisplayFormat:      "102",
-		MZ_WorkOutPoint:                         "219435023808000",
+		MZ_WorkOutPoint:                         "1262874240000",
 		MZ_WorkInPoint:                          "212061193344000",
 		ExplodedTracks:                          "true",
 	},
@@ -65,6 +65,8 @@ var deafultValues = map[reflect.Type]interface{}{
 	reflect.TypeOf(Codec{}): Codec{
 		Name:            "Apple ProRes 422",
 		AppName:         "Final Cut Pro",
+		Appmanufacturer: "Apple Inc.",
+		Appversion:      "7.0",
 		Codecname:       "Apple ProRes 422",
 		Codectypename:   "Apple ProRes 422",
 		Codectypecode:   "apcn",
@@ -158,9 +160,9 @@ type Media struct {
 }
 
 type Video struct {
-	Format                Format                `xml:"format,omitempty"`
-	Track                 []Track               `xml:"track,omitempty"`
-	Samplecharacteristics Samplecharacteristics `xml:"samplecharacteristics,omitempty"`
+	Format                *Format                `xml:"format,omitempty"`
+	Track                 []Track                `xml:"track,omitempty"`
+	Samplecharacteristics *Samplecharacteristics `xml:"samplecharacteristics,omitempty"`
 }
 
 type Audio struct {
@@ -274,7 +276,7 @@ type Codec struct {
 
 type Samplecharacteristics struct {
 	Rate             Rate   `xml:"rate,omitempty"`
-	Codec            Codec  `xml:"codec,omitempty"`
+	Codec            *Codec `xml:"codec,omitempty"`
 	Width            int    `xml:"width,omitempty"`
 	Height           int    `xml:"height,omitempty"`
 	Anamorphic       string `xml:"anamorphic,omitempty"`
@@ -360,6 +362,8 @@ func deepCopyDefaults(obj, defaultObj reflect.Value) {
 		panic("Type in default args are in compatiable")
 	}
 
+	// fmt.Println(obj.Type().Name())
+
 	// fmt.Println(val)
 
 	// fmt.Println(defaultObjVal)
@@ -368,9 +372,14 @@ func deepCopyDefaults(obj, defaultObj reflect.Value) {
 		structFeild := obj.Field(i)
 		defaultStrutObj := defaultObj.Field(i)
 
-		if structFeild.IsZero() {
+		if (structFeild.Kind() == reflect.Ptr && structFeild.IsNil()) || structFeild.IsZero() || structFeild.Kind() == reflect.Struct {
 			if structFeild.Kind() == reflect.Struct {
 				Constructor(structFeild.Addr())
+			} else if structFeild.Kind() == reflect.Ptr {
+				typ := (structFeild.Type().Elem())
+				addr := reflect.New(typ).Elem().Addr()
+				Constructor(addr)
+				structFeild.Set(addr)
 			} else {
 				structFeild.Set(defaultStrutObj)
 			}
