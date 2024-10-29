@@ -3,10 +3,14 @@ package main
 import (
 	"encoding/xml"
 	"fmt"
+	"math"
 	"os"
+	"sort"
 	"strconv"
+	"strings"
 
 	"github.com/google/uuid"
+	"github.com/hajimehoshi/go-mp3"
 	types "jalar.me/xml/Types"
 )
 
@@ -14,8 +18,73 @@ const XMLHEADER = `<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE xmeml>
 `
 
+func convertSecToSecFrames(seconds float64) float64 {
+	totalFramesFullFrames := math.Floor(seconds * 29.97)
+	sec := math.Floor(totalFramesFullFrames / 29.97)
+	frame := math.Floor(totalFramesFullFrames - sec*29.97)
+
+	return sec + frame/100
+}
+
+func GetDurations() []float64 {
+	fileDirs, err := os.ReadDir("./audio")
+	if err != nil {
+		fmt.Println(err.Error())
+		return nil
+	}
+
+	sort.Slice(fileDirs, func(i, j int) bool {
+		f1, _ := strconv.ParseInt(strings.Split(fileDirs[i].Name(), ".")[0], 10, 64)
+		f2, _ := strconv.ParseInt(strings.Split(fileDirs[j].Name(), ".")[0], 10, 64)
+
+		return f1 < f2
+	})
+
+	var clipsDuration = make([]float64, 0, len(fileDirs))
+
+	var cnt = 5
+
+	for _, name := range fileDirs {
+		if cnt == 0 {
+			break
+		}
+		cnt--
+		fileName := fmt.Sprintf("./audio/%s", name.Name())
+
+		file, err := os.Open(fileName)
+		if err != nil {
+			fmt.Println(err.Error(), fileName)
+			continue
+		}
+		defer file.Close()
+
+		decoder, err := mp3.NewDecoder(file)
+		if err != nil {
+			fmt.Println(err.Error(), fileName)
+			continue
+		}
+
+		length := decoder.Length()
+
+		samplePerSec := decoder.SampleRate()
+
+		// length := decoder.Length()
+
+		totalSample := float64(length) / 4
+
+		time := (totalSample) / float64(samplePerSec)
+
+		clipsDuration = append(clipsDuration, convertSecToSecFrames(time))
+		fmt.Println(time, convertSecToSecFrames(time), fileName)
+	}
+
+	return clipsDuration
+
+}
+
 func main() {
 
+	timeClips := GetDurations()
 	a := types.Xmeml{}
 	types.Constructor(&a)
 
@@ -35,7 +104,7 @@ func main() {
 	types.Constructor(&v2)
 	types.Constructor(&v3)
 	v1.MZ_TrackTargeted = "1"
-	v1.Clipitems = getVideoClipItems()
+	v1.Clipitems = getVideoClipItems(timeClips)
 
 	videoTracks = append(videoTracks, v1, v2, v3)
 	a.Sequence.Media.Video.Track = videoTracks
@@ -65,7 +134,7 @@ func main() {
 	//Add Audio Tracks
 
 	for i := 1; i <= 1; i++ {
-		temp := GetAudioTrack(i)
+		temp := GetAudioTrack(i, timeClips)
 		types.Constructor(&temp)
 		a.Sequence.Media.Audio.Track = append(a.Sequence.Media.Audio.Track, temp)
 	}
@@ -91,7 +160,7 @@ func main() {
 // 	// track.TL_SQVisibleBaseTime
 // }
 
-func GetAudioTrack(ind int) types.Track {
+func GetAudioTrack(ind int, timings []float64) types.Track {
 	var track = types.Track{}
 	types.Constructor(&track)
 	track.TL_SQTrackAudioKeyframeStyle = "0"
@@ -107,15 +176,23 @@ func GetAudioTrack(ind int) types.Track {
 	track.CurrentExplodedTrackIndex = fmt.Sprintf("%d", ind-1)
 	track.PremiereTrackType = "Stereo"
 	track.Outputchannelindex = ind
-	track.Clipitems = GetAudioClipItems()
+	track.Clipitems = GetAudioClipItems(timings)
 	return track
 }
 
-func GetAudioClipItems() []types.Clipitem {
+func GetAudioClipItems(timings []float64) []types.Clipitem {
 	var clips []types.Clipitem
-	clips = append(clips, getAudioClip(4, "fin.wav", 0, 91))
-	clips = append(clips, getAudioClip(5, "fin.wav", 91, 240))
-	clips = append(clips, getAudioClip(6, "fin.wav", 269, 434))
+
+	var prev int
+
+	for i := range timings {
+		duration := convertDuration(timings[i])
+		left := prev
+		right := left + int(duration)
+
+		prev = right
+		clips = append(clips, getAudioClip(len(timings)+i+1, fmt.Sprintf("%d.wav", i+1+4), left, right))
+	}
 	return clips
 }
 
@@ -130,10 +207,10 @@ func getAudioClip(ind int, fileName string, start, end int) types.Clipitem {
 	clip.Duration = int64(49616)
 	clip.Start = start
 	clip.End = end
-	clip.In = int64(start)
-	clip.Out = int64(end)
-	clip.PproTicksIn = strconv.FormatUint(uint64(clip.Start)*uint64(tickMeasure), 10)
-	clip.PproTicksOut = strconv.FormatUint(uint64(clip.End)*uint64(tickMeasure), 10)
+	clip.In = 0
+	clip.Out = int64(end - start)
+	clip.PproTicksIn = strconv.FormatUint(uint64(clip.In)*uint64(tickMeasure), 10)
+	clip.PproTicksOut = strconv.FormatUint(uint64(clip.Out)*uint64(tickMeasure), 10)
 	clip.Alphatype = ""
 	clip.Pixelaspectratio = ""
 	clip.Anamorphic = ""
@@ -171,14 +248,28 @@ func getAudioFile(ind int, fileName string) types.File {
 	return file
 }
 
-func getVideoClipItems() []types.Clipitem {
+func convertDuration(seconds float64) int64 {
+	temp := int(seconds * 100)
+	return int64(seconds)*30 + int64(temp%100)
+}
+
+func getVideoClipItems(timings []float64) []types.Clipitem {
 
 	var clips []types.Clipitem
-	var clip1 = GetVideoClipItem(1, "Clip1", 0, 91)
-	var clip2 = GetVideoClipItem(2, "Clip2", 91, 240)
-	var clip3 = GetVideoClipItem(3, "Clip3", 269, 434)
 
-	clips = append(clips, clip1, clip2, clip3)
+	var prev int64
+
+	for i := range timings {
+		seconds := timings[i]
+		durations := convertDuration(seconds)
+
+		left := prev
+		right := prev + durations
+
+		prev = right
+
+		clips = append(clips, GetVideoClipItem(i+1, fmt.Sprintf("Clip%d", i+1), int(left), int(right)))
+	}
 	return clips
 }
 

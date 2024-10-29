@@ -2,7 +2,7 @@
 <!DOCTYPE xmeml>
 <xmeml version="4">
 	<sequence id="sequence-1" TL.SQAudioVisibleBase="0" TL.SQVideoVisibleBase="0" TL.SQVisibleBaseTime="0" TL.SQAVDividerPosition="0.5" TL.SQHideShyTracks="0" TL.SQHeaderWidth="236" TL.SQDataTrackViewControlState="1" Monitor.ProgramZoomOut="5373573004800" Monitor.ProgramZoomIn="0" TL.SQTimePerPixel="0.01196542318491731" MZ.EditLine="2542700160000" MZ.Sequence.PreviewFrameSizeHeight="1168" MZ.Sequence.PreviewFrameSizeWidth="876" MZ.Sequence.AudioTimeDisplayFormat="200" MZ.Sequence.PreviewRenderingClassID="1061109567" MZ.Sequence.PreviewRenderingPresetCodec="1634755443" MZ.Sequence.PreviewRenderingPresetPath="EncoderPresets\SequencePreview\9678af98-a7b7-4bdb-b477-7ac9c8df4a4e\QuickTime.epr" MZ.Sequence.PreviewUseMaxRenderQuality="false" MZ.Sequence.PreviewUseMaxBitDepth="false" MZ.Sequence.EditingModeGUID="9678af98-a7b7-4bdb-b477-7ac9c8df4a4e" MZ.Sequence.VideoTimeDisplayFormat="102" MZ.WorkOutPoint="1262874240000" MZ.WorkInPoint="212061193344000" explodedTracks="true">
-		<uuid>cb531af8-f7ab-4987-92b8-27621729ac95</uuid>
+		<uuid>389bf4cb-acf1-46ea-9de2-fe7f51a930f8</uuid>
 		<duration>434</duration>
 		<rate>
 			<timebase>30</timebase>
@@ -56,11 +56,11 @@
 							<ntsc>TRUE</ntsc>
 						</rate>
 						<start>0</start>
-						<end>91</end>
+						<end>254</end>
 						<in>107892</in>
-						<out>107983</out>
+						<out>108146</out>
 						<pproTicksIn>914456685542400</pproTicksIn>
-						<pproTicksOut>915227971257600</pproTicksOut>
+						<pproTicksOut>916609505011200</pproTicksOut>
 						<alphatype>none</alphatype>
 						<pixelaspectratio>square</pixelaspectratio>
 						<anamorphic>FALSE</anamorphic>
@@ -125,12 +125,12 @@
 							<timebase>30</timebase>
 							<ntsc>TRUE</ntsc>
 						</rate>
-						<start>91</start>
-						<end>240</end>
+						<start>254</start>
+						<end>476</end>
 						<in>107892</in>
-						<out>108041</out>
+						<out>108114</out>
 						<pproTicksIn>914456685542400</pproTicksIn>
-						<pproTicksOut>915719559955200</pproTicksOut>
+						<pproTicksOut>916338283660800</pproTicksOut>
 						<alphatype>none</alphatype>
 						<pixelaspectratio>square</pixelaspectratio>
 						<anamorphic>FALSE</anamorphic>
@@ -195,18 +195,158 @@
 							<timebase>30</timebase>
 							<ntsc>TRUE</ntsc>
 						</rate>
-						<start>269</start>
-						<end>434</end>
+						<start>476</start>
+						<end>932</end>
 						<in>107892</in>
-						<out>108057</out>
+						<out>108348</out>
 						<pproTicksIn>914456685542400</pproTicksIn>
-						<pproTicksOut>915855170630400</pproTicksOut>
+						<pproTicksOut>918321589785600</pproTicksOut>
 						<alphatype>none</alphatype>
 						<pixelaspectratio>square</pixelaspectratio>
 						<anamorphic>FALSE</anamorphic>
 						<file id="file-3">
 							<name>3.png</name>
 							<pathurl>file://localhost/D%3a/Etheral%20SEEkers/Pictures/new%20oilpainted%20pics/3.png</pathurl>
+							<rate>
+								<timebase>30</timebase>
+								<ntsc>TRUE</ntsc>
+							</rate>
+							<timecode>
+								<rate>
+									<timebase>30</timebase>
+									<ntsc>TRUE</ntsc>
+								</rate>
+								<string>00:00:00:00</string>
+								<frame>0</frame>
+								<displayformat>NDF</displayformat>
+							</timecode>
+							<media>
+								<video>
+									<samplecharacteristics>
+										<rate>
+											<timebase>30</timebase>
+											<ntsc>TRUE</ntsc>
+										</rate>
+										<width>1920</width>
+										<height>1080</height>
+										<anamorphic>FALSE</anamorphic>
+										<pixelaspectratio>square</pixelaspectratio>
+										<fielddominance>none</fielddominance>
+									</samplecharacteristics>
+								</video>
+							</media>
+						</file>
+						<logginginfo>
+							<description></description>
+							<scene></scene>
+							<shottake></shottake>
+							<lognote></lognote>
+							<good></good>
+							<originalvideofilename></originalvideofilename>
+							<originalaudiofilename></originalaudiofilename>
+						</logginginfo>
+						<colorinfo>
+							<lut></lut>
+							<lut1></lut1>
+							<asc_sop></asc_sop>
+							<asc_sat></asc_sat>
+							<lut2></lut2>
+						</colorinfo>
+						<labels>
+							<label2>Lavender</label2>
+						</labels>
+					</clipitem>
+					<clipitem id="clipitem-4">
+						<masterclipid>masterclip-4</masterclipid>
+						<name>Clip4</name>
+						<enabled>TRUE</enabled>
+						<duration>1294705</duration>
+						<rate>
+							<timebase>30</timebase>
+							<ntsc>TRUE</ntsc>
+						</rate>
+						<start>932</start>
+						<end>1152</end>
+						<in>107892</in>
+						<out>108112</out>
+						<pproTicksIn>914456685542400</pproTicksIn>
+						<pproTicksOut>916321332326400</pproTicksOut>
+						<alphatype>none</alphatype>
+						<pixelaspectratio>square</pixelaspectratio>
+						<anamorphic>FALSE</anamorphic>
+						<file id="file-4">
+							<name>4.png</name>
+							<pathurl>file://localhost/D%3a/Etheral%20SEEkers/Pictures/new%20oilpainted%20pics/4.png</pathurl>
+							<rate>
+								<timebase>30</timebase>
+								<ntsc>TRUE</ntsc>
+							</rate>
+							<timecode>
+								<rate>
+									<timebase>30</timebase>
+									<ntsc>TRUE</ntsc>
+								</rate>
+								<string>00:00:00:00</string>
+								<frame>0</frame>
+								<displayformat>NDF</displayformat>
+							</timecode>
+							<media>
+								<video>
+									<samplecharacteristics>
+										<rate>
+											<timebase>30</timebase>
+											<ntsc>TRUE</ntsc>
+										</rate>
+										<width>1920</width>
+										<height>1080</height>
+										<anamorphic>FALSE</anamorphic>
+										<pixelaspectratio>square</pixelaspectratio>
+										<fielddominance>none</fielddominance>
+									</samplecharacteristics>
+								</video>
+							</media>
+						</file>
+						<logginginfo>
+							<description></description>
+							<scene></scene>
+							<shottake></shottake>
+							<lognote></lognote>
+							<good></good>
+							<originalvideofilename></originalvideofilename>
+							<originalaudiofilename></originalaudiofilename>
+						</logginginfo>
+						<colorinfo>
+							<lut></lut>
+							<lut1></lut1>
+							<asc_sop></asc_sop>
+							<asc_sat></asc_sat>
+							<lut2></lut2>
+						</colorinfo>
+						<labels>
+							<label2>Lavender</label2>
+						</labels>
+					</clipitem>
+					<clipitem id="clipitem-5">
+						<masterclipid>masterclip-5</masterclipid>
+						<name>Clip5</name>
+						<enabled>TRUE</enabled>
+						<duration>1294705</duration>
+						<rate>
+							<timebase>30</timebase>
+							<ntsc>TRUE</ntsc>
+						</rate>
+						<start>1152</start>
+						<end>1239</end>
+						<in>107892</in>
+						<out>107979</out>
+						<pproTicksIn>914456685542400</pproTicksIn>
+						<pproTicksOut>915194068588800</pproTicksOut>
+						<alphatype>none</alphatype>
+						<pixelaspectratio>square</pixelaspectratio>
+						<anamorphic>FALSE</anamorphic>
+						<file id="file-5">
+							<name>5.png</name>
+							<pathurl>file://localhost/D%3a/Etheral%20SEEkers/Pictures/new%20oilpainted%20pics/5.png</pathurl>
 							<rate>
 								<timebase>30</timebase>
 								<ntsc>TRUE</ntsc>
@@ -295,9 +435,9 @@
 					</group>
 				</outputs>
 				<track TL.SQTrackAudioKeyframeStyle="0" TL.SQTrackShy="0" TL.SQTrackExpandedHeight="25" TL.SQTrackExpanded="0" MZ.TrackTargeted="1" PannerCurrentValue="0.5" PannerStartKeyframe="-91445760000000000,0.5,0,0,0,0,0,0" PannerName="Balance" currentExplodedTrackIndex="0" totalExplodedTrackCount="1" premiereTrackType="Stereo">
-					<clipitem id="clipitem-4" premiereChannelType="mono">
-						<masterclipid>masterclip-4</masterclipid>
-						<name>fin.wav</name>
+					<clipitem id="clipitem-6" premiereChannelType="mono">
+						<masterclipid>masterclip-6</masterclipid>
+						<name>5.wav</name>
 						<enabled>TRUE</enabled>
 						<duration>49616</duration>
 						<rate>
@@ -305,146 +445,278 @@
 							<ntsc>TRUE</ntsc>
 						</rate>
 						<start>0</start>
-						<end>91</end>
+						<end>254</end>
 						<in>0</in>
-						<out>91</out>
+						<out>254</out>
 						<pproTicksIn>0</pproTicksIn>
-						<pproTicksOut>771285715200</pproTicksOut>
-						<file id="file-4">
-							<name>fin.wav</name>
-							<pathurl>file://localhost/E%3a/Spirituality/Ethereal%20seekers/61)Why%20chosen%20one%20Become%20Monsters/fin.wav</pathurl>
-							<rate>
-								<timebase>30</timebase>
-								<ntsc>TRUE</ntsc>
-							</rate>
-							<duration>49616</duration>
-							<timecode>
-								<rate>
-									<timebase>30</timebase>
-									<ntsc>TRUE</ntsc>
-								</rate>
-								<string>00;00;00;00</string>
-								<frame>0</frame>
-								<displayformat>DF</displayformat>
-							</timecode>
-							<media>
-								<audio>
-									<samplecharacteristics>
-										<depth>16</depth>
-										<samplerate>44100</samplerate>
-									</samplecharacteristics>
-									<channelcount>1</channelcount>
-									<audiochannel>
-										<sourcechannel>1</sourcechannel>
-									</audiochannel>
-								</audio>
-							</media>
-						</file>
-						<sourcetrack>
-							<mediatype>audio</mediatype>
-							<trackindex>1</trackindex>
-						</sourcetrack>
-						<logginginfo>
-							<description></description>
-							<scene></scene>
-							<shottake></shottake>
-							<lognote></lognote>
-							<good></good>
-							<originalvideofilename></originalvideofilename>
-							<originalaudiofilename></originalaudiofilename>
-						</logginginfo>
-						<colorinfo>
-							<lut></lut>
-							<lut1></lut1>
-							<asc_sop></asc_sop>
-							<asc_sat></asc_sat>
-							<lut2></lut2>
-						</colorinfo>
-					</clipitem>
-					<clipitem id="clipitem-5" premiereChannelType="mono">
-						<masterclipid>masterclip-5</masterclipid>
-						<name>fin.wav</name>
-						<enabled>TRUE</enabled>
-						<duration>49616</duration>
-						<rate>
-							<timebase>30</timebase>
-							<ntsc>TRUE</ntsc>
-						</rate>
-						<start>91</start>
-						<end>240</end>
-						<in>91</in>
-						<out>240</out>
-						<pproTicksIn>771285715200</pproTicksIn>
-						<pproTicksOut>2034160128000</pproTicksOut>
-						<file id="file-5">
-							<name>fin.wav</name>
-							<pathurl>file://localhost/E%3a/Spirituality/Ethereal%20seekers/61)Why%20chosen%20one%20Become%20Monsters/fin.wav</pathurl>
-							<rate>
-								<timebase>30</timebase>
-								<ntsc>TRUE</ntsc>
-							</rate>
-							<duration>49616</duration>
-							<timecode>
-								<rate>
-									<timebase>30</timebase>
-									<ntsc>TRUE</ntsc>
-								</rate>
-								<string>00;00;00;00</string>
-								<frame>0</frame>
-								<displayformat>DF</displayformat>
-							</timecode>
-							<media>
-								<audio>
-									<samplecharacteristics>
-										<depth>16</depth>
-										<samplerate>44100</samplerate>
-									</samplecharacteristics>
-									<channelcount>1</channelcount>
-									<audiochannel>
-										<sourcechannel>1</sourcechannel>
-									</audiochannel>
-								</audio>
-							</media>
-						</file>
-						<sourcetrack>
-							<mediatype>audio</mediatype>
-							<trackindex>1</trackindex>
-						</sourcetrack>
-						<logginginfo>
-							<description></description>
-							<scene></scene>
-							<shottake></shottake>
-							<lognote></lognote>
-							<good></good>
-							<originalvideofilename></originalvideofilename>
-							<originalaudiofilename></originalaudiofilename>
-						</logginginfo>
-						<colorinfo>
-							<lut></lut>
-							<lut1></lut1>
-							<asc_sop></asc_sop>
-							<asc_sat></asc_sat>
-							<lut2></lut2>
-						</colorinfo>
-					</clipitem>
-					<clipitem id="clipitem-6" premiereChannelType="mono">
-						<masterclipid>masterclip-6</masterclipid>
-						<name>fin.wav</name>
-						<enabled>TRUE</enabled>
-						<duration>49616</duration>
-						<rate>
-							<timebase>30</timebase>
-							<ntsc>TRUE</ntsc>
-						</rate>
-						<start>269</start>
-						<end>434</end>
-						<in>269</in>
-						<out>434</out>
-						<pproTicksIn>2279954476800</pproTicksIn>
-						<pproTicksOut>3678439564800</pproTicksOut>
+						<pproTicksOut>2152819468800</pproTicksOut>
 						<file id="file-6">
-							<name>fin.wav</name>
-							<pathurl>file://localhost/E%3a/Spirituality/Ethereal%20seekers/61)Why%20chosen%20one%20Become%20Monsters/fin.wav</pathurl>
+							<name>5.wav</name>
+							<pathurl>file://localhost/E%3a/Spirituality/Ethereal%20seekers/61)Why%20chosen%20one%20Become%20Monsters/5.wav</pathurl>
+							<rate>
+								<timebase>30</timebase>
+								<ntsc>TRUE</ntsc>
+							</rate>
+							<duration>49616</duration>
+							<timecode>
+								<rate>
+									<timebase>30</timebase>
+									<ntsc>TRUE</ntsc>
+								</rate>
+								<string>00;00;00;00</string>
+								<frame>0</frame>
+								<displayformat>DF</displayformat>
+							</timecode>
+							<media>
+								<audio>
+									<samplecharacteristics>
+										<depth>16</depth>
+										<samplerate>44100</samplerate>
+									</samplecharacteristics>
+									<channelcount>1</channelcount>
+									<audiochannel>
+										<sourcechannel>1</sourcechannel>
+									</audiochannel>
+								</audio>
+							</media>
+						</file>
+						<sourcetrack>
+							<mediatype>audio</mediatype>
+							<trackindex>1</trackindex>
+						</sourcetrack>
+						<logginginfo>
+							<description></description>
+							<scene></scene>
+							<shottake></shottake>
+							<lognote></lognote>
+							<good></good>
+							<originalvideofilename></originalvideofilename>
+							<originalaudiofilename></originalaudiofilename>
+						</logginginfo>
+						<colorinfo>
+							<lut></lut>
+							<lut1></lut1>
+							<asc_sop></asc_sop>
+							<asc_sat></asc_sat>
+							<lut2></lut2>
+						</colorinfo>
+					</clipitem>
+					<clipitem id="clipitem-7" premiereChannelType="mono">
+						<masterclipid>masterclip-7</masterclipid>
+						<name>6.wav</name>
+						<enabled>TRUE</enabled>
+						<duration>49616</duration>
+						<rate>
+							<timebase>30</timebase>
+							<ntsc>TRUE</ntsc>
+						</rate>
+						<start>254</start>
+						<end>476</end>
+						<in>0</in>
+						<out>222</out>
+						<pproTicksIn>0</pproTicksIn>
+						<pproTicksOut>1881598118400</pproTicksOut>
+						<file id="file-7">
+							<name>6.wav</name>
+							<pathurl>file://localhost/E%3a/Spirituality/Ethereal%20seekers/61)Why%20chosen%20one%20Become%20Monsters/6.wav</pathurl>
+							<rate>
+								<timebase>30</timebase>
+								<ntsc>TRUE</ntsc>
+							</rate>
+							<duration>49616</duration>
+							<timecode>
+								<rate>
+									<timebase>30</timebase>
+									<ntsc>TRUE</ntsc>
+								</rate>
+								<string>00;00;00;00</string>
+								<frame>0</frame>
+								<displayformat>DF</displayformat>
+							</timecode>
+							<media>
+								<audio>
+									<samplecharacteristics>
+										<depth>16</depth>
+										<samplerate>44100</samplerate>
+									</samplecharacteristics>
+									<channelcount>1</channelcount>
+									<audiochannel>
+										<sourcechannel>1</sourcechannel>
+									</audiochannel>
+								</audio>
+							</media>
+						</file>
+						<sourcetrack>
+							<mediatype>audio</mediatype>
+							<trackindex>1</trackindex>
+						</sourcetrack>
+						<logginginfo>
+							<description></description>
+							<scene></scene>
+							<shottake></shottake>
+							<lognote></lognote>
+							<good></good>
+							<originalvideofilename></originalvideofilename>
+							<originalaudiofilename></originalaudiofilename>
+						</logginginfo>
+						<colorinfo>
+							<lut></lut>
+							<lut1></lut1>
+							<asc_sop></asc_sop>
+							<asc_sat></asc_sat>
+							<lut2></lut2>
+						</colorinfo>
+					</clipitem>
+					<clipitem id="clipitem-8" premiereChannelType="mono">
+						<masterclipid>masterclip-8</masterclipid>
+						<name>7.wav</name>
+						<enabled>TRUE</enabled>
+						<duration>49616</duration>
+						<rate>
+							<timebase>30</timebase>
+							<ntsc>TRUE</ntsc>
+						</rate>
+						<start>476</start>
+						<end>932</end>
+						<in>0</in>
+						<out>456</out>
+						<pproTicksIn>0</pproTicksIn>
+						<pproTicksOut>3864904243200</pproTicksOut>
+						<file id="file-8">
+							<name>7.wav</name>
+							<pathurl>file://localhost/E%3a/Spirituality/Ethereal%20seekers/61)Why%20chosen%20one%20Become%20Monsters/7.wav</pathurl>
+							<rate>
+								<timebase>30</timebase>
+								<ntsc>TRUE</ntsc>
+							</rate>
+							<duration>49616</duration>
+							<timecode>
+								<rate>
+									<timebase>30</timebase>
+									<ntsc>TRUE</ntsc>
+								</rate>
+								<string>00;00;00;00</string>
+								<frame>0</frame>
+								<displayformat>DF</displayformat>
+							</timecode>
+							<media>
+								<audio>
+									<samplecharacteristics>
+										<depth>16</depth>
+										<samplerate>44100</samplerate>
+									</samplecharacteristics>
+									<channelcount>1</channelcount>
+									<audiochannel>
+										<sourcechannel>1</sourcechannel>
+									</audiochannel>
+								</audio>
+							</media>
+						</file>
+						<sourcetrack>
+							<mediatype>audio</mediatype>
+							<trackindex>1</trackindex>
+						</sourcetrack>
+						<logginginfo>
+							<description></description>
+							<scene></scene>
+							<shottake></shottake>
+							<lognote></lognote>
+							<good></good>
+							<originalvideofilename></originalvideofilename>
+							<originalaudiofilename></originalaudiofilename>
+						</logginginfo>
+						<colorinfo>
+							<lut></lut>
+							<lut1></lut1>
+							<asc_sop></asc_sop>
+							<asc_sat></asc_sat>
+							<lut2></lut2>
+						</colorinfo>
+					</clipitem>
+					<clipitem id="clipitem-9" premiereChannelType="mono">
+						<masterclipid>masterclip-9</masterclipid>
+						<name>8.wav</name>
+						<enabled>TRUE</enabled>
+						<duration>49616</duration>
+						<rate>
+							<timebase>30</timebase>
+							<ntsc>TRUE</ntsc>
+						</rate>
+						<start>932</start>
+						<end>1152</end>
+						<in>0</in>
+						<out>220</out>
+						<pproTicksIn>0</pproTicksIn>
+						<pproTicksOut>1864646784000</pproTicksOut>
+						<file id="file-9">
+							<name>8.wav</name>
+							<pathurl>file://localhost/E%3a/Spirituality/Ethereal%20seekers/61)Why%20chosen%20one%20Become%20Monsters/8.wav</pathurl>
+							<rate>
+								<timebase>30</timebase>
+								<ntsc>TRUE</ntsc>
+							</rate>
+							<duration>49616</duration>
+							<timecode>
+								<rate>
+									<timebase>30</timebase>
+									<ntsc>TRUE</ntsc>
+								</rate>
+								<string>00;00;00;00</string>
+								<frame>0</frame>
+								<displayformat>DF</displayformat>
+							</timecode>
+							<media>
+								<audio>
+									<samplecharacteristics>
+										<depth>16</depth>
+										<samplerate>44100</samplerate>
+									</samplecharacteristics>
+									<channelcount>1</channelcount>
+									<audiochannel>
+										<sourcechannel>1</sourcechannel>
+									</audiochannel>
+								</audio>
+							</media>
+						</file>
+						<sourcetrack>
+							<mediatype>audio</mediatype>
+							<trackindex>1</trackindex>
+						</sourcetrack>
+						<logginginfo>
+							<description></description>
+							<scene></scene>
+							<shottake></shottake>
+							<lognote></lognote>
+							<good></good>
+							<originalvideofilename></originalvideofilename>
+							<originalaudiofilename></originalaudiofilename>
+						</logginginfo>
+						<colorinfo>
+							<lut></lut>
+							<lut1></lut1>
+							<asc_sop></asc_sop>
+							<asc_sat></asc_sat>
+							<lut2></lut2>
+						</colorinfo>
+					</clipitem>
+					<clipitem id="clipitem-10" premiereChannelType="mono">
+						<masterclipid>masterclip-10</masterclipid>
+						<name>9.wav</name>
+						<enabled>TRUE</enabled>
+						<duration>49616</duration>
+						<rate>
+							<timebase>30</timebase>
+							<ntsc>TRUE</ntsc>
+						</rate>
+						<start>1152</start>
+						<end>1239</end>
+						<in>0</in>
+						<out>87</out>
+						<pproTicksIn>0</pproTicksIn>
+						<pproTicksOut>737383046400</pproTicksOut>
+						<file id="file-10">
+							<name>9.wav</name>
+							<pathurl>file://localhost/E%3a/Spirituality/Ethereal%20seekers/61)Why%20chosen%20one%20Become%20Monsters/9.wav</pathurl>
 							<rate>
 								<timebase>30</timebase>
 								<ntsc>TRUE</ntsc>
